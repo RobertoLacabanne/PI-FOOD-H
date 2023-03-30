@@ -9,23 +9,25 @@ const getApiInfo = async () => {
     const urlApi = await axios.get(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&number=100&addRecipeInformation=true`
     );
-    await urlApi.data.results.map(async (el) => {
-      let recipeCreated = await Recipe.create({
-        name: el.title,
-        summary: el.summary,
-        healthScore: el.healthScore,
-        stepbyStep: el.analyzedInstructions[0]?.steps.map((paso) => {
-          return `<b>${paso.number}</b>   ${paso.step}  `;
-        }),
-        image: el.image,
-      });
-      let dietDb = await Diet.findAll({
-        where: {
-          name: el.diets,
-        },
-      });
-      recipeCreated.addDiet(dietDb);
-    });
+    await Promise.all(
+      urlApi.data.results.map(async (el) => {
+        let recipeCreated = await Recipe.create({
+          name: el.title,
+          summary: el.summary,
+          healthScore: el.healthScore,
+          stepbyStep: el.analyzedInstructions[0]?.steps.map((paso) => {
+            return `<b>${paso.number}</b>   ${paso.step}  `;
+          }),
+          image: el.image,
+        });
+        let dietDb = await Diet.findAll({
+          where: {
+            name: el.diets,
+          },
+        });
+        recipeCreated.addDiet(dietDb);
+      })
+    );
   } else {
     console.log('los datos de recetas ya estan cargados 202');
   }
