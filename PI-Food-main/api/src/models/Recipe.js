@@ -1,33 +1,46 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../index');
-
-const Recipe = sequelize.define('Recipe', {
-  id: {
-    type: DataTypes.UUID,
-    defaultValue: DataTypes.UUIDV4,
-    primaryKey: true,
-    allowNull: false,
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  image: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  summary: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  healthScore: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
-  stepByStep: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-});
-
-module.exports = Recipe;
+/* Exportando la Conexion */
+module.exports = (sequelize) => {
+  /* Definimos el Models */
+  sequelize.define(
+    'recipe',
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      summary: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
+      healthScore: {
+        type: DataTypes.INTEGER,
+        validate: {
+          min: 0,
+          max: 100,
+        },
+      },
+      /* hace Referencia al paso a paso de la comida */
+      stepbyStep: {
+        /* type: DataTypes.STRING, */
+        type: DataTypes.ARRAY(DataTypes.TEXT),
+      },
+      image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      createIndb: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+      },
+    },
+    { timestamps: false }
+  );
+};
