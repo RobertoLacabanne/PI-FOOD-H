@@ -1,5 +1,3 @@
-require('dotenv').config();
-
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -39,6 +37,4 @@ server.use((err, req, res, next) => {
 });
 
 module.exports = server;
-
-
 
