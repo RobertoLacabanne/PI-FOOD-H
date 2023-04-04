@@ -5,7 +5,7 @@ import CardList from './CardList';
 import Filters from './Filters';
 import Pagination from './Pagination';
 import { setRecipes, fetchRecipes } from '../../redux/actions/actions'; // Importa las acciones necesarias de Redux
-import './HomePage.css'; // Importa el archivo de estilos correspondiente (si es necesario)
+
 
 const HomePage = () => {
   const dispatch = useDispatch();

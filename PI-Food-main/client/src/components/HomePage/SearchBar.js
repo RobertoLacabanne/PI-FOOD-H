@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { fetchRecipes, searchRecipes } from '../../redux/actions/actions'; // Ahora 'searchRecipes' debería estar disponible
 
 
-import './SearchBar.css'; // Importa el archivo de estilos correspondiente (si es necesario)
 
 const SearchBar = () => {
   const dispatch = useDispatch();

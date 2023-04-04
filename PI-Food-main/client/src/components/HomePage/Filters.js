@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { filterByDiet, filterBySource } from '../../redux/actions/actions'; // Ajusta la ruta de importación aquí
 
-import './Filters.css'; // Importa el archivo de estilos correspondiente (si es necesario)
 
 const Filters = () => {
   const dispatch = useDispatch();

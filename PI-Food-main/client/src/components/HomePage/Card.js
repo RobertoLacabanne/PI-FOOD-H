@@ -1,5 +1,5 @@
 import React from 'react';
-import './Card.css'; // Importa el archivo de estilos correspondiente (si es necesario)
+
 
 const Card = ({ recipe }) => {
   const { id, name, image, diets } = recipe;

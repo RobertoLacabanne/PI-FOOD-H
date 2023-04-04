@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { searchRecipesByName } from '../../api';
+
 // ActionTypes
 export const SET_RECIPES = 'SET_RECIPES';
 export const SET_FILTER = 'SET_FILTER';
@@ -39,15 +41,16 @@ export const decrementPage = () => ({
   type: DECREMENT_PAGE,
 });
 export const fetchRecipes = () => {
-    return async (dispatch) => {
-      try {
-        const response = await axios.get('/api/recipes'); // Reemplaza '/api/recipes' con la ruta correcta de tu API
-        dispatch(setRecipes(response.data));
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  return async (dispatch) => {
+    try {
+      const response = await searchRecipesByName(''); // Utiliza searchRecipesByName en lugar de axios.get
+      dispatch(setRecipes(response));
+    } catch (error) {
+      console.error(error);
+    }
   };
+};
+
 
 export const searchRecipes = (searchTerm) => ({
   type: SEARCH_RECIPES,
