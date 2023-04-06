@@ -1,13 +1,14 @@
+//recetas.routes.js
+
 const { Router } = require('express');
 const { Recipe, Diet } = require('../db');
 const axios = require('axios');
-//const { API_KEY } = process.env;
 const router = Router();
 const model = require('../controllers/ControllerRecipe');
 const { recipes } = require('../controllers/RecetasApi');
 
-/* listar todas las dietas y buscar por name */
-router.get('/all', async (req, res) => {
+// Listar todas las recetas y buscar por nombre
+router.get('/', async (req, res) => {
   const name = req.query.name;
   let recipeTotal = await model.getDbinfo();
   if (name) {
@@ -26,13 +27,11 @@ router.get('/all', async (req, res) => {
   }
 });
 
-/* --------Busco mis Recetas po Id----------- */
-
+// Buscar recetas por ID
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
   let recipeTotal = await model.getDbinfo();
-  /* const recipeTotal = await Recipe.findByPk(id); */
-  /* res.status(200).send(recipeTotal); */
+
   if (id) {
     let recipeId = await recipeTotal.filter((el) => el.id == id);
     recipeId.length
@@ -41,9 +40,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-/* eliminar un recipe */
-
-/*-------Agrega un Receta y tipos de Dietas------*/
+// Agregar una nueva receta
 router.post('/', async (req, res) => {
   const { name, summary, healthScore, stepbyStep, image, createIndb, diet } =
     req.body;
@@ -59,15 +56,17 @@ router.post('/', async (req, res) => {
         image,
         createIndb,
       });
-      let dietDb = await Diet.findAll({
-        where: {
-          name: diet,
-        },
-      });
-      recipeCreated.addDiet(dietDb); // agrego la dieta al modelo Recipe
-      res.send('Receta Creado con exito');
+
+      // Buscar todas las dietas en la base de datos y agregarlas al modelo Recipe
+      for (const dietName of diet) {
+        const dietDb = await Diet.findOne({ where: { name: dietName } });
+        if (dietDb) {
+          await recipeCreated.addDiet(dietDb);
+        }
+      }
+      res.send('Receta creada con éxito');
     } catch (error) {
-      res.status(404).send(error + 'Erro al crear la Receta');
+      res.status(404).send(error + 'Error al crear la receta');
     }
   }
 });

@@ -1,6 +1,9 @@
+//..ControllersRecipe.js
+
 const axios = require('axios');
 const { API_KEY } = process.env;
 const { Recipe, Diet } = require('../db');
+
 
 /* Obtengo las recetas de la Api */
 const getApiInfo = async () => {
