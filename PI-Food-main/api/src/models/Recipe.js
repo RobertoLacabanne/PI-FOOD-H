@@ -28,8 +28,8 @@ module.exports = (sequelize) => {
       },
       /* hace Referencia al paso a paso de la comida */
       stepbyStep: {
-        /* type: DataTypes.STRING, */
         type: DataTypes.ARRAY(DataTypes.TEXT),
+        allowNull: false,
       },
       image: {
         type: DataTypes.STRING,

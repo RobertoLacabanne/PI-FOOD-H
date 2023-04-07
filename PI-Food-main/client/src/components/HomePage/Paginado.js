@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPage } from '../../redux/actions/actions'; // Importa la acción necesaria de Redux
+import { paginado  } from '../../redux/actions/actions'; // Importa la acción necesaria de Redux
 
 const Pagination = () => {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ const Pagination = () => {
   const totalPages = useSelector((state) => state.recipes.totalPages); // Cambiado de state.pagination.totalPages a state.recipes.totalPages
 
   const handleClick = (pageNumber) => {
-    dispatch(setPage(pageNumber));
+    dispatch(paginado (pageNumber));
   };
 
   const renderPageNumbers = () => {

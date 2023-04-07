@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchRecipes, searchRecipes } from '../../redux/actions/actions'; // Ahora 'searchRecipes' debería estar disponible
+import { searchRecipes } from '../../redux/actions/actions'; // Ahora 'searchRecipes' debería estar disponible
 
 
 

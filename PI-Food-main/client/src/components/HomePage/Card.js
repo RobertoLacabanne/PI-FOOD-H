@@ -1,25 +1,34 @@
 import React from 'react';
+import './styles/card.css';
+import { Link } from 'react-router-dom';
+import defaul from '../../assets/img/juse.jpg';
 
-
-const Card = ({ recipe }) => {
-  const { id, name, image, diets } = recipe;
-
+export default function Card({ /* id, name, image, diets */ data }) {
   return (
-    <div className="card">
-      <img src={image} alt={`${name} image`} className="card-img" />
-      <div className="card-content">
-        <h2 className="card-title">{name}</h2>
-        <ul className="card-diets">
-          {diets.map((diet, index) => (
-            <li key={index}>{diet}</li>
-          ))}
-        </ul>
+    <div className="menu__card">
+      <div className="menu__image">
+        <img
+          src={data.image}
+          alt="Imagen de la Receta No Fount"
+          onError={(e) => {
+            e.target.src = defaul;
+          }}
+        />
       </div>
-      <a href={`/recipe/${id}`} className="card-details-link">
-        Ver detalles
-      </a>
+      <div className="menu__info">
+        <h6>{data.name}</h6>
+
+        {/*--------- secciones de Dietas --------*/}
+        <div className="diet__info">
+          {data.diets.map((el) => (
+            <p key={el.name}>{el.name}</p>
+          ))}
+        </div>
+
+        <Link to={`/details/${data.id} `} key={data.id} className="menu__btn">
+          Detail
+        </Link>
+      </div>
     </div>
   );
-};
-
-export default Card;
+}
