@@ -7,16 +7,18 @@ import order_image from '../../assets/img/recipes_formulario.png';
 import { FaArrowLeft } from 'react-icons/fa';
 import logo_booton from "../../assets/img/logo_boottom.png";
 
-/* import './styles.css'; */
+
 
 export default function Recipes() {
   const dispatch = useDispatch();
   const histori = useHistory();
   const diets = useSelector((state) => state.diets);
 
-  useEffect(() => {
-    dispatch(getAllDiet());
-  }, []);
+// Recipes.js
+useEffect(() => {
+  dispatch(getAllDiet());
+}, [dispatch]); // Agrega 'dispatch' al array de dependencias
+
 
   const [input, setInput] = useState({
     name: '',

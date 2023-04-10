@@ -1,3 +1,5 @@
+//Details.js
+
 import { React, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -12,7 +14,8 @@ export default function Details() {
   const { id } = useParams();
   useEffect(() => {
     dispatch(recipesDetils(id));
-  }, [dispatch]);
+  }, [dispatch, id]);
+  
   let data = useSelector((state) => state.details);
 
   return (

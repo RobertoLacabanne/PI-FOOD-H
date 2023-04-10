@@ -1,11 +1,9 @@
-// redux/selectors.js
 import { createSelector } from 'reselect';
 
-const getRecipes = (state) => state.recipes.recipes;
+const getRecipes = (state) => state.recipes.allRecipes;
 const getFilter = (state) => state.recipes.filter;
 const getSort = (state) => state.recipes.sort;
 const getCurrentPage = (state) => state.recipes.page;
-
 
 export const getFilteredSortedPaginatedRecipes = createSelector(
   [getRecipes, getFilter, getSort, getCurrentPage],

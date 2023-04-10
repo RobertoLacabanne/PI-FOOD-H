@@ -22,20 +22,20 @@ const Navbar = () => {
       <div className="redes">
         <div className="linkedit">
           <a
-            href="https://www.linkedin.com/in/manuel-romero-11582017b/"
+            href="https://www.linkedin.com/in/roberto-lacabanne-b1065b232/"
             target="_black"
           >
             <img src={linkedith} alt="linkedint" />
           </a>
         </div>
         <div className="github">
-          <a href="https://github.com/maalroba22" target="_black">
+          <a href="https://github.com/RobertoLacabanne" target="_black">
             <img src={github} alt="github" />
           </a>
         </div>
       </div>
       <div className="nav__buton">
-        <Link to="/addrecipe" className="link">
+        <Link to="/create" className="link">
           <h3 className="button">Add New Recipe</h3>
         </Link>
       </div>

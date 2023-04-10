@@ -3,7 +3,8 @@ import './styles/card.css';
 import { Link } from 'react-router-dom';
 import defaul from '../../assets/img/juse.jpg';
 
-export default function Card({ /* id, name, image, diets */ data }) {
+
+export default function Card({ data }) {
   return (
     <div className="menu__card">
       <div className="menu__image">

@@ -1,7 +1,7 @@
 
 
 import axios from 'axios';
-import { searchRecipesByName } from '../../api';
+
 
 // ActionTypes
 export const SET_RECIPES = 'SET_RECIPES';
@@ -14,7 +14,7 @@ export const SEARCH_RECIPES = 'SEARCH_RECIPES';
 export const FILTER_BY_DIET = 'FILTER_BY_DIET';
 export const FILTER_BY_SOURCE = 'FILTER_BY_SOURCE';
 
-export const GET_ALL_RECIPE = 'GET_ALL_RECIPE';
+export const GET_ALL_RECIPE = 'GET_ALL_RECIPES';
 export const ORDER_BY_NAME = 'ORDER_BY_NAME';
 export const GET_ALL_DIET = 'GET_ALL_DIET';
 export const ORDER_BY_SCORE = 'ORDER_BY_SCORE';
@@ -30,6 +30,7 @@ export const SET_ERROR = 'SET_ERROR';
 export const getAllrecipes = () => async (dispatch) => {
   try {
     const res = await axios.get('http://localhost:4000/recipes');
+    console.log(res)
     dispatch({ type: 'GET_ALL_RECIPES', payload: res.data });
   } catch (error) {
     console.error('AxiosError', error);

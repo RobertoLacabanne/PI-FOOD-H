@@ -10,10 +10,10 @@ import Loading from './Loading/Loading';
 import Error404 from '../Error/Error404';
 
 const HomePage = () => {
-  const recipe = useSelector((state) => state.recipes.recipes); // Modificado aquí
-  const page = useSelector((state) => state.recipes.page); // Modificado aquí
-  const error = useSelector((state) => state.recipes.error); // Modificado aquí
-  const allDiet = useSelector((state) => state.recipes.diets); // Modificado aquí
+  const recipe = useSelector((state) => state.recipes.recipes);
+  const page = useSelector((state) => state.recipes.page);
+  const error = useSelector((state) => state.recipes.error);
+  const allDiet = useSelector((state) => state.recipes.diets);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -21,8 +21,8 @@ const HomePage = () => {
     dispatch(getAllDiet());
   }, [dispatch]);
 
-  const [order, setOrder] = useState(''); //para guardar los ordenamientos
-  const [socre, setScore] = useState('');
+  const [ setOrder] = useState('');
+  const [ setScore] = useState('');
 
   /* funcion para Reiniciar los filtros */
 

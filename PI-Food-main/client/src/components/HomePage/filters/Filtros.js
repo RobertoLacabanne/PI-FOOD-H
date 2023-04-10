@@ -1,6 +1,9 @@
+
+
+// ../client/component/filters/Filtros.js
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { getAllrecipes } from '../../../redux/actions/actions';
 import './Filter.css';
 import {
   orderByaz,
@@ -11,6 +14,7 @@ import {
 
 export default function Filtros({ diet, setorder, setscore }) {
   const dispatch = useDispatch();
+
 
   function handleOderByname(e) {
     dispatch(orderByaz(e.target.value));
