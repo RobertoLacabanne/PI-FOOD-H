@@ -17,7 +17,7 @@ export default function Recipes() {
 // Recipes.js
 useEffect(() => {
   dispatch(getAllDiet());
-}, [dispatch]); // Agrega 'dispatch' al array de dependencias
+}, [dispatch]); 
 
 
   const [input, setInput] = useState({
@@ -27,6 +27,7 @@ useEffect(() => {
     stepbyStep: [],
     image: '',
     diet: [],
+    recipes: [],
     createIndb: true,
   });
   console.log(input);
@@ -117,18 +118,6 @@ useEffect(() => {
 
           <div className="container__forms">
             <div className="container__logo">
-              {/* <div>
-                {!input.image.trim() ? (
-                  <img src={food} alt="no hay imagen" width="300px" />
-                ) : (
-                  <img
-                    src={input.image}
-                    alt="no hay imagen"
-                    width="300px"
-                    height="270px"
-                  />
-                )}
-              </div> */}
             </div>
             <div className={s.forms__info}>
               <h1>NEW RECIPE</h1>

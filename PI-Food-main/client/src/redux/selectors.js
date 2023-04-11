@@ -1,9 +1,10 @@
+// redux/selectors.js
 import { createSelector } from 'reselect';
 
-const getRecipes = (state) => state.recipes.allRecipes;
 const getFilter = (state) => state.recipes.filter;
 const getSort = (state) => state.recipes.sort;
 const getCurrentPage = (state) => state.recipes.page;
+const getRecipes = (state) => state.recipes.filteredRecipes;
 
 export const getFilteredSortedPaginatedRecipes = createSelector(
   [getRecipes, getFilter, getSort, getCurrentPage],
@@ -33,3 +34,14 @@ export const getFilteredSortedPaginatedRecipes = createSelector(
     return filteredRecipes.slice(startIndex, endIndex);
   }
 );
+
+export const getFilteredRecipesCount = createSelector([getRecipes, getFilter], (recipes, filter) => {
+  // Filtrar las recetas por dietas y fuentes
+  let filteredRecipes = recipes.filter((recipe) => {
+    const matchesDiet = filter.diet === 'all' || recipe.diets.includes(filter.diet);
+    const matchesSource = filter.source === 'all' || recipe.source === filter.source;
+    return matchesDiet && matchesSource;
+  });
+
+  return filteredRecipes.length;
+});

@@ -1,4 +1,4 @@
-
+//actions.js
 
 import axios from 'axios';
 
@@ -30,7 +30,7 @@ export const SET_ERROR = 'SET_ERROR';
 export const getAllrecipes = () => async (dispatch) => {
   try {
     const res = await axios.get('http://localhost:4000/recipes');
-    console.log(res)
+    console.log('getAllrecipes response', res.data); // Agregar console.log aquí
     dispatch({ type: 'GET_ALL_RECIPES', payload: res.data });
   } catch (error) {
     console.error('AxiosError', error);
@@ -53,6 +53,7 @@ export function postAddRecipes(payload) {
 export const getAllDiet = () => async (dispatch) => {
   try {
     const res = await axios.get('http://localhost:4000/diets');
+    console.log('getAllDiet response', res.data); // Agregar console.log aquí
     dispatch({ type: 'GET_ALL_DIETS', payload: res.data });
   } catch (error) {
     console.error('No se Han podido cargar las dietas', error);
@@ -76,7 +77,8 @@ export const getNamerecipes = (name) => {
 
 export const recipesDetils = (id) => {
   return async function (dispatch) {
-    let json = await axios.get('recipes/' + id);
+    let json = await axios.get('http://localhost:4000/recipes/' + id); // Asegúrate de que la URL sea correcta
+    console.log('recipesDetils response', json.data); // Agrega console.log aquí
     return dispatch({
       type: RECIPE_DETAILS,
       payload: json.data,

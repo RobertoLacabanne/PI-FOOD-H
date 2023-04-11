@@ -1,5 +1,3 @@
-
-
 // ../client/component/filters/Filtros.js
 
 import React from 'react';
@@ -17,27 +15,29 @@ export default function Filtros({ diet, setorder, setscore }) {
 
 
   function handleOderByname(e) {
+    console.log('handleOderByname called');
     dispatch(orderByaz(e.target.value));
     setorder(e.target.value);
   }
-  /* ordenar  por Score Puntuacion */
-
+  
   function handleOrderScore(e) {
+    console.log('handleOrderScore called');
     dispatch(orderByscore(e.target.value));
     setscore(e.target.value);
   }
-
+  
   function handleFilterDiets(e) {
+    console.log('handleFilterDiets called');
     dispatch(filterBydiet(e.target.value));
   }
-
+  
   function handleFilterCreated(e) {
+    console.log('handleFilterCreated called');
     dispatch(filtercreated(e.target.value));
   }
-
-  /* corregir handle reset filter */
-  function handleClick(e) {
-    /*  dispatch(getAllrecipes()); */
+  
+  function handleResetFilters(e) {
+    console.log('handleResetFilters called');
     window.location.reload(false);
   }
 
@@ -78,7 +78,7 @@ export default function Filtros({ diet, setorder, setscore }) {
         <option value="created">Created</option>
       </select>
 
-      <button onClick={handleClick}>Reset Filter</button>
+      <button onClick={handleResetFilters}>Reset Filter</button>
     </div>
   );
 }

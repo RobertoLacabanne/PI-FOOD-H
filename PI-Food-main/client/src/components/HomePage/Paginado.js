@@ -8,8 +8,10 @@ const Pagination = () => {
   const totalPages = useSelector((state) => state.recipes.totalPages); // Cambiado de state.pagination.totalPages a state.recipes.totalPages
 
   const handleClick = (pageNumber) => {
-    dispatch(paginado (pageNumber));
+    console.log("Clic en el botón de paginación:", pageNumber);
+    dispatch(paginado(pageNumber));
   };
+  
 
   const renderPageNumbers = () => {
     let pageNumbers = [];

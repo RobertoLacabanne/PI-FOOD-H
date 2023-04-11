@@ -1,5 +1,3 @@
-//Details.js
-
 import { React, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,60 +14,63 @@ export default function Details() {
     dispatch(recipesDetils(id));
   }, [dispatch, id]);
   
-  let data = useSelector((state) => state.details);
+  const detailsArray = useSelector((state) => state.recipes.details);
+
+  const data = detailsArray && detailsArray.length > 0 ? detailsArray[0] : null;
+
+
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   return (
-    <div>
-      {data.map((el) => (
-        <div className="detalle" key={el.id}>
-          <div className="detalle__left">
-            <div className="detalle_name">
-              <Link to="/home">
-                <div className="d__back">
-                  <p>
-                    <FaArrowLeft />
-                  </p>
-                </div>
-              </Link>
-              <h1>{el.name}</h1>
-              <img
-                className="d_imagen"
-                src={el.image}
-                alt=" Not Fount"
-                onError={(e) => {
-                  e.target.src = defaul;
-                }}
-              />
-              <span>
-                <p>Score</p>
-              </span>
-              <div className="d__range">
-                {<input type="range" defaultValue={el.healthScore} />}
-                <span>{el.healthScore}</span>
-              </div>
-              <p>Diests</p>
-              <div className="d__diets">
-                {el.diets.map((d) => (
-                  <div className="d__parrafo" key={d.name}>
-                    <p>{d.name}</p>
-                  </div>
-                ))}
-              </div>
+    <div className="detalle">
+      <div className="detalle__left">
+        <div className="detalle_name">
+          <Link to="/home">
+            <div className="d__back">
+              <p>
+                <FaArrowLeft />
+              </p>
             </div>
+          </Link>
+          <h1>{data.name}</h1>
+          <img
+            className="d_imagen"
+            src={data.image}
+            alt=" Not Fount"
+            onError={(e) => {
+              e.target.src = defaul;
+            }}
+          />
+          <span>
+            <p>Score</p>
+          </span>
+          <div className="d__range">
+            {<input type="range" defaultValue={data.healthScore} />}
+            <span>{data.healthScore}</span>
           </div>
-          {/* contenedor derecho */}
-          <div className="detalle__right">
-            <div className="d__desc">
-              <h1>summary</h1>
-              <p dangerouslySetInnerHTML={{ __html: el?.summary }}></p>
-            </div>
-            {!el.stepbyStep ? '' : <h1>StepbyStep </h1>}
-            <div className="d__pasos">
-              <p dangerouslySetInnerHTML={{ __html: el?.stepbyStep }}></p>
-            </div>
+          <p>Diests</p>
+          <div className="d__diets">
+            {data.diets.map((d) => (
+              <div className="d__parrafo" key={d.name}>
+                <p>{d.name}</p>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
+      </div>
+      {/* contenedor derecho */}
+      <div className="detalle__right">
+        <div className="d__desc">
+          <h1>summary</h1>
+          <p dangerouslySetInnerHTML={{ __html: data?.summary }}></p>
+        </div>
+        {!data.stepbyStep ? '' : <h1>StepbyStep </h1>}
+        <div className="d__pasos">
+          <p dangerouslySetInnerHTML={{ __html: data?.stepbyStep }}></p>
+        </div>
+      </div>
     </div>
   );
 }

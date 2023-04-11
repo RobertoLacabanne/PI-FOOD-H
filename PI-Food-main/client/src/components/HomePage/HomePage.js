@@ -21,10 +21,40 @@ const HomePage = () => {
     dispatch(getAllDiet());
   }, [dispatch]);
 
-  const [ setOrder] = useState('');
-  const [ setScore] = useState('');
+  const [order, setOrder] = useState(''); 
+  const [score, setScore] = useState(''); 
+ 
+  function sortAndFilterRecipes(recipes) {
+    let sortedRecipes = [...recipes];
+  
+    if (order === "asc") {
+      sortedRecipes.sort((a, b) => {
+        if (!a.title || !b.title) {
+          return 0;
+        }
+        return a.title.localeCompare(b.title);
+      });
+    } else if (order === "des") {
+      sortedRecipes.sort((a, b) => {
+        if (!a.title || !b.title) {
+          return 0;
+        }
+        return b.title.localeCompare(a.title);
+      });
+    }
+  
+    if (score === "asc") {
+      sortedRecipes.sort((a, b) => a.spoonacularScore - b.spoonacularScore);
+    } else if (score === "des") {
+      sortedRecipes.sort((a, b) => b.spoonacularScore - a.spoonacularScore);
+    }
+  
+    return sortedRecipes;
+  }
+  
 
   /* funcion para Reiniciar los filtros */
+  let sortedAndFilteredRecipes = sortAndFilterRecipes(recipe);
 
   /*----------------- Paginado Nuevo----------------- */
   let currenRecipes = [];
@@ -41,7 +71,10 @@ const HomePage = () => {
   }
 
   /* const [loder, setloader] = useState(false); */
-
+  if (Array.isArray(sortedAndFilteredRecipes)) {
+    currenRecipes = sortedAndFilteredRecipes.slice(inicial, indexFinal);
+  }
+  
   return (
     <div>
       {/* -------------------Navbar------------------- */}
