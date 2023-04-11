@@ -1,24 +1,21 @@
-import { React, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllDiet, postAddRecipes } from '../../redux/actions/actions';
 import { Link, useHistory } from 'react-router-dom';
 import s from './Recipes.module.css';
 import order_image from '../../assets/img/recipes_formulario.png';
 import { FaArrowLeft } from 'react-icons/fa';
-import logo_booton from "../../assets/img/logo_boottom.png";
-
-
+import logo_booton from '../../assets/img/logo_boottom.png';
 
 export default function Recipes() {
   const dispatch = useDispatch();
   const histori = useHistory();
-  const diets = useSelector((state) => state.diets);
+  const diets = useSelector((state) => state.recipes.diets);
 
-// Recipes.js
-useEffect(() => {
-  dispatch(getAllDiet());
-}, [dispatch]); 
 
+  useEffect(() => {
+    dispatch(getAllDiet());
+  }, [dispatch]);
 
   const [input, setInput] = useState({
     name: '',
@@ -27,7 +24,6 @@ useEffect(() => {
     stepbyStep: [],
     image: '',
     diet: [],
-    recipes: [],
     createIndb: true,
   });
   console.log(input);
@@ -118,6 +114,18 @@ useEffect(() => {
 
           <div className="container__forms">
             <div className="container__logo">
+              {/* <div>
+                {!input.image.trim() ? (
+                  <img src={food} alt="no hay imagen" width="300px" />
+                ) : (
+                  <img
+                    src={input.image}
+                    alt="no hay imagen"
+                    width="300px"
+                    height="270px"
+                  />
+                )}
+              </div> */}
             </div>
             <div className={s.forms__info}>
               <h1>NEW RECIPE</h1>
@@ -183,19 +191,19 @@ useEffect(() => {
                 </div>
 
                 <div>
-                  <select name="diet" onChange={(e) => selectHandleDiet(e)}>
-                    {diets?.map((el) => (
-                      <option value={el.name}>{el.name}</option>
-                    ))}
-                  </select>
-
+                <select name="diet" onChange={(e) => selectHandleDiet(e)}>
+                 {diets?.map((el) => (
+                 <option key={el.id} value={el.name}>{el.name}</option>
+                 ))}
+                </select>
+                
                   <ul>
                     <div className={s.diet}>
                       {input.diet.map((el) => (
                         <div className={s.chip} key={el.id}>
                           <li>{el}</li>
                           <span
-                            /*  key={el.id} */
+                            //  key={el.id} 
                             className={s.buton__x}
                             onClick={() => handleDelete(el)}
                           >

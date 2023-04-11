@@ -1,5 +1,5 @@
 body {
-    background-image: url('../../components/LandingPage/img/bg1.jpg');
+    background-image: url('../../components/LandingPage/img/architecture-1171462_1920.jpg');
   }
   .intro {
     display: flex;
@@ -27,20 +27,31 @@ body {
     font-size: 3rem;
   }
   .i__name > :nth-child(2) {
-    color: var(--orange);
+    color: var(--black);
     font-weight: bold;
     font-size: 3rem;
   }
   .i__name > :nth-child(3) {
     font-weight: 100;
     font-size: 14px;
-    color: var(--gray);
+    color: var(--black);
     margin-top: 10px;
   }
   .i__button {
-    width: 15rem;
-    height: 2.5rem;
-    margin-top: 2rem;
+    border: 1px solid #ccc;
+    background-color: transparent;
+    color: #333;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .i__button:hover {
+    background-color: #333;
+    color: #fff;
   }
   
   .i__right {

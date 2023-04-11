@@ -4,15 +4,13 @@
   
   nav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    /* position: fixed; */
-    right: 0;
-    left: 0;
-    background: rgb(248, 248, 248);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1000;
-    margin-bottom: 10px;
+    height: 80px;
+    background-color: #333;
+    padding: 0 20px;
+  
+  
   }
   nav .logo img {
     width: 100px;
@@ -37,7 +35,15 @@
     background-position: 5px;
   }
   .nav__buton .link {
+    background-color: #444;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    box-shadow: none;
+    color: #fff;
     text-decoration: none;
+    font-size: 18px;
+    transition: all 0.3s ease;
   }
   .redes {
     display: flex;

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import github from '../../../assets/img/github.png';
 import linkedith from '../../../assets/img/linkedin.png';
 
+
 import './navbar.css';
 
 const Navbar = () => {
@@ -12,7 +13,9 @@ const Navbar = () => {
     <nav>
       <div className="logo">
         <div className="imgen__logo">
+          <a href='http://localhost:3000/'>
           <img src={logonav} alt="Logo Not Fount" width="50px" height="50px" />
+          </a>
         </div>
       </div>
 

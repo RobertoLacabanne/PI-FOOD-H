@@ -24,6 +24,10 @@ export const SEARCH_NAME_RECYPE = 'SEARCH_NAME_RECYPE';
 export const POST_ADD_RECIPES = 'POST_ADD_RECIPES';
 export const FILTER_DB_OR_API = 'FILTER_DB_OR_API';
 export const SET_ERROR = 'SET_ERROR';
+export const GET_ALL_DIETS = 'GET_ALL_DIETS';
+
+
+
 
 // Action Creators
 
@@ -50,15 +54,20 @@ export function postAddRecipes(payload) {
   };
 }
 
-export const getAllDiet = () => async (dispatch) => {
-  try {
-    const res = await axios.get('http://localhost:4000/diets');
-    console.log('getAllDiet response', res.data); // Agregar console.log aquí
-    dispatch({ type: 'GET_ALL_DIETS', payload: res.data });
-  } catch (error) {
-    console.error('No se Han podido cargar las dietas', error);
-  }
-};
+
+export function getAllDiet() {
+  return async function (dispatch) {
+    try {
+      var dietas = await axios.get('/diets');
+      return dispatch({
+        type: GET_ALL_DIET,
+        payload: dietas.data,
+      });
+    } catch (error) {
+      console.log('No se Han podido cargar las dietas');
+    }
+  };
+}
 
 export const getNamerecipes = (name) => {
   return async function (dispatch) {

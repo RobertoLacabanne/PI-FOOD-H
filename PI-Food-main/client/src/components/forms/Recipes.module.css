@@ -1,3 +1,4 @@
+
 .container {
     width: 100%;
     height: 100vh;
@@ -52,7 +53,7 @@
   
   .forms__info input:hover {
     border-bottom: solid 1px;
-    border-color: #f5a055;
+    border-color: #252424;
     transition: 0.1s linear;
   }
   .forms__info select {
@@ -67,7 +68,7 @@
   }
   .forms__info select:hover {
     border-bottom: solid 1px;
-    border-color: #f5a055;
+    border-color: #fff;
     transition: 0.1s linear;
   }
   
@@ -83,18 +84,18 @@
   .forms__info textarea:hover {
     outline: none;
     border-bottom: solid 1px;
-    border-color: #f5a055;
+    border-color: #201e1d;
   }
   
   .boton {
-    background-color: rgb(33, 115, 239);
+    background-color: rgb(8, 8, 8);
     cursor: pointer;
   }
   .boton input {
     color: white;
   }
   .boton__add input {
-    background-color: rgb(33, 115, 239);
+    background-color: rgb(90, 96, 105);
     color: white;
     opacity: 0.5;
     margin-bottom: 15px;
@@ -103,7 +104,7 @@
     font-weight: bold;
   }
   .boton__new input {
-    background-color: rgb(33, 115, 239);
+    background-color: rgb(30, 34, 39);
     color: white;
   
     margin-bottom: 15px;
@@ -115,7 +116,7 @@
     width: 400px;
   }
   h1 {
-    color: #f5a055;
+    color: black;
     margin-right: 15px;
   }
   .score {
@@ -142,7 +143,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #f5a055;
+    background-color: #22201e;
     border-radius: 7px;
     padding: 0 4px;
     margin: 2px;

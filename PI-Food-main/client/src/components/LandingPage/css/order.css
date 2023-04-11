@@ -15,7 +15,7 @@
   }
   
   .team h1 span {
-    color: #fac031;
+    color: black;
     margin-left: 15px;
     font-family: mv boli;
   }
@@ -24,7 +24,7 @@
     content: '';
     width: 100%;
     height: 2px;
-    background: #fac031;
+    background: black;
     display: block;
     position: relative;
     bottom: 15px;
@@ -87,7 +87,7 @@
   }
   
   .team .team_box .profile .info .name {
-    color: #fac031;
+    color: black;
     margin-bottom: 15px;
   }
   
