@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllDiet, postAddRecipes } from '../../redux/actions/actions';
 import { Link, useHistory } from 'react-router-dom';
 import s from './Recipes.module.css';
-import order_image from '../../assets/img/recipes_formulario.png';
+import order_image from '../../assets/img/recipetable.jpg';
 import { FaArrowLeft } from 'react-icons/fa';
 import logo_booton from '../../assets/img/logo_boottom.png';
 

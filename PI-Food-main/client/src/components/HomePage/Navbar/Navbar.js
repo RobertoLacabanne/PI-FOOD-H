@@ -1,6 +1,6 @@
 import React from 'react';
 import Search from './Search';
-import logonav from '../../../assets/img/logo.png';
+import logonav from '../../../assets/img/food6.jpg';
 import { Link } from 'react-router-dom';
 import github from '../../../assets/img/github.png';
 import linkedith from '../../../assets/img/linkedin.png';
